@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adven Network | The Ultimate Experience</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Adven Network | The Ultimate Sri Lankan Minecraft Server</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
         :root {
             --neon-blue: #00f2ff;
             --neon-green: #39ff14;
             --ice-blue: #a5f3fc;
-            --dark-bg: #050508;
-            --glass: rgba(255, 255, 255, 0.05);
+            --dark-bg: #030305;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --neon-glow: 0 0 15px rgba(0, 242, 255, 0.5);
         }
 
         * {
@@ -26,60 +27,60 @@
             font-family: 'Poppins', sans-serif;
             background-color: var(--dark-bg);
             color: white;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* --- Animated Background Canvas --- */
-        #bg-canvas {
+        canvas#bg-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(to bottom, #080810, #000);
         }
 
         /* --- Navigation --- */
         nav {
-            padding: 20px 10%;
+            padding: 15px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(15px);
-            position: sticky;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            position: fixed;
             top: 0;
+            width: 100%;
             z-index: 1000;
-            border-bottom: 1px solid rgba(0, 242, 255, 0.2);
+            border-bottom: 2px solid var(--neon-blue);
+            box-shadow: var(--neon-glow);
         }
 
         .logo {
             font-family: 'Orbitron', sans-serif;
-            color: var(--neon-blue);
             font-size: 1.8rem;
+            color: var(--neon-blue);
             text-decoration: none;
-            text-shadow: 0 0 10px var(--neon-blue);
             font-weight: 900;
+            text-shadow: 0 0 10px var(--neon-blue);
         }
 
         .nav-links a {
             color: white;
             text-decoration: none;
-            margin-left: 25px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: 0.3s;
+            margin-left: 20px;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            transition: 0.3s;
         }
 
         .nav-links a:hover {
             color: var(--neon-blue);
-            text-shadow: 0 0 8px var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
         }
 
-        /* --- Hero Section --- */
+        /* --- Hero --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -87,93 +88,66 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 20px;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.05) 0%, transparent 70%);
         }
 
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            margin-bottom: 15px;
-            color: white;
-            text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+            font-size: clamp(3rem, 10vw, 6rem);
+            line-height: 1;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px var(--neon-blue);
         }
 
         .hero p {
             font-size: 1.2rem;
-            max-width: 700px;
+            max-width: 800px;
             color: var(--ice-blue);
-            margin-bottom: 40px;
-            opacity: 0.8;
+            margin-bottom: 30px;
         }
 
-        /* --- NEON BUTTONS --- */
-        .neon-btn {
-            padding: 15px 40px;
-            background: transparent;
-            color: var(--neon-blue);
+        /* --- Advanced Neon Buttons --- */
+        .btn-neon {
+            padding: 15px 45px;
             border: 2px solid var(--neon-blue);
+            color: var(--neon-blue);
             font-family: 'Orbitron', sans-serif;
+            text-decoration: none;
             font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
             border-radius: 5px;
             transition: 0.4s;
-            position: relative;
-            overflow: hidden;
-            text-decoration: none;
-            display: inline-block;
+            text-shadow: 0 0 5px var(--neon-blue);
+            background: transparent;
+            cursor: pointer;
         }
 
-        .neon-btn:hover {
+        .btn-neon:hover {
             background: var(--neon-blue);
             color: black;
             box-shadow: 0 0 20px var(--neon-blue), 0 0 50px var(--neon-blue);
+            transform: scale(1.05);
         }
 
-        .ip-box {
-            margin-top: 30px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(0, 242, 255, 0.3);
-            padding: 15px 30px;
-            border-radius: 50px;
+        /* --- Statistics Section --- */
+        .stats-bar {
             display: flex;
-            align-items: center;
-            gap: 20px;
-            cursor: pointer;
-            transition: 0.3s;
+            justify-content: space-around;
+            padding: 40px;
+            background: rgba(0, 242, 255, 0.05);
+            border-top: 1px solid var(--neon-blue);
+            border-bottom: 1px solid var(--neon-blue);
         }
 
-        .ip-box:hover {
-            border-color: var(--neon-green);
-            box-shadow: 0 0 15px var(--neon-green);
-        }
+        .stat-item h3 { color: var(--neon-green); font-family: 'Orbitron'; font-size: 2rem; }
 
-        /* --- Sections Layout --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 100px 20px;
-        }
-
-        h2.section-title {
+        /* --- Main Sections --- */
+        .section { padding: 100px 10%; }
+        .section-title {
             font-family: 'Orbitron', sans-serif;
-            text-align: center;
             font-size: 2.5rem;
+            text-align: center;
             margin-bottom: 60px;
-            color: white;
-            position: relative;
-        }
-
-        h2.section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--neon-blue);
-            box-shadow: 0 0 10px var(--neon-blue);
+            text-transform: uppercase;
         }
 
         .grid {
@@ -182,74 +156,61 @@
             gap: 30px;
         }
 
-        /* --- NEON CARDS --- */
-        .card {
-            background: var(--glass);
+        /* --- Neon Cards --- */
+        .neon-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 40px;
             border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: 0.4s;
-            text-align: center;
+            position: relative;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
+        .neon-card:hover {
             border-color: var(--neon-blue);
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
-            background: rgba(0, 242, 255, 0.05);
+            box-shadow: 0 0 25px rgba(0, 242, 255, 0.2);
+            transform: translateY(-10px);
         }
 
-        .card i {
-            font-size: 3rem;
-            color: var(--neon-blue);
-            margin-bottom: 20px;
-        }
+        .neon-card i { font-size: 3rem; color: var(--neon-blue); margin-bottom: 20px; }
+        .neon-card h3 { color: var(--neon-green); margin-bottom: 15px; }
 
-        /* --- Staff Section --- */
-        .staff-card {
-            display: flex;
-            align-items: center;
-            background: var(--glass);
+        /* --- Accordion Rules --- */
+        .rule-item {
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            border-left: 4px solid var(--neon-blue);
+        }
+        .rule-header {
             padding: 20px;
-            border-radius: 10px;
-            gap: 20px;
-            border-left: 5px solid var(--neon-green);
-        }
-
-        .staff-img {
-            width: 60px;
-            height: 60px;
-            background: #222;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            cursor: pointer;
             font-weight: bold;
+            display: flex;
+            justify-content: space-between;
         }
 
         /* --- Footer --- */
         footer {
-            padding: 60px 20px;
-            text-align: center;
-            background: #020205;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: #000;
+            padding: 80px 10% 30px;
+            border-top: 2px solid var(--neon-blue);
         }
 
-        #toast {
+        #copy-toast {
             position: fixed;
-            bottom: 30px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             background: var(--neon-green);
             color: black;
-            padding: 12px 30px;
-            border-radius: 5px;
+            padding: 10px 30px;
+            border-radius: 50px;
             font-weight: bold;
             display: none;
-            z-index: 2000;
-            box-shadow: 0 0 15px var(--neon-green);
+            box-shadow: 0 0 20px var(--neon-green);
         }
-
     </style>
 </head>
 <body>
@@ -257,155 +218,171 @@
 <canvas id="bg-canvas"></canvas>
 
 <nav>
-    <a href="#" class="logo">ADVEN NET</a>
+    <a href="#" class="logo">ADVEN</a>
     <div class="nav-links">
         <a href="#home">Home</a>
-        <a href="#features">Features</a>
+        <a href="#modes">Modes</a>
         <a href="#rules">Rules</a>
+        <a href="#faq">FAQ</a>
         <a href="#staff">Staff</a>
     </div>
 </nav>
 
 <div class="hero" id="home">
-    <h1>ADVEN MINECRAFT NETWORK</h1>
-    <p>Dive into the most advanced Minecraft ecosystem in Sri Lanka. High performance, custom features, and a glowing community await you.</p>
-    
-    <div class="ip-box" onclick="copyIP()">
-        <span style="font-family: 'Orbitron'; color: var(--neon-green); letter-spacing: 2px;">PLAY.ADVENNETWORK.LK</span>
-        <span style="background: var(--neon-green); color: black; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">COPY</span>
-    </div>
-
-    <div style="margin-top: 40px;">
-        <a href="https://discord.gg/yourlink" class="neon-btn"><i class="fab fa-discord"></i> Join Discord</a>
+    <h1>ADVEN NETWORK</h1>
+    <p>Sri Lanka's most advanced Minecraft experience. Survival, Skyblock, and custom Minigames with 24/7 uptime and zero lag.</p>
+    <div style="gap: 20px; display: flex;">
+        <button class="btn-neon" onclick="copyIP()">PLAY NOW</button>
+        <a href="https://discord.gg/yourlink" class="btn-neon" style="border-color: var(--neon-green); color: var(--neon-green);">DISCORD</a>
     </div>
 </div>
 
-<div class="container" id="features">
-    <h2 class="section-title">Server Features</h2>
+<div class="stats-bar">
+    <div class="stat-item"><h3>24/7</h3><p>Uptime</p></div>
+    <div class="stat-item"><h3>100+</h3><p>Daily Players</p></div>
+    <div class="stat-item"><h3>0</h3><p>Lag spikes</p></div>
+    <div class="stat-item"><h3>10+</h3><p>Game Modes</p></div>
+</div>
+
+<div class="section" id="modes">
+    <h2 class="section-title">Our Game Modes</h2>
     <div class="grid">
-        <div class="card">
-            <i class="fas fa-cubes"></i>
-            <h3>Custom Survival</h3>
-            <p>Experience survival like never before with custom enchants, jobs, and a balanced economy.</p>
+        <div class="neon-card">
+            <i class="fas fa-potted-plant"></i>
+            <h3>Eco Survival</h3>
+            <p>Custom jobs, land claims, and a player-run market. Build your legacy safely.</p>
         </div>
-        <div class="card">
-            <i class="fas fa-bolt"></i>
-            <h3>No Lag</h3>
-            <p>Powered by Adven Hosting, 20 TPS gaming experience.</p>
+        <div class="neon-card">
+            <i class="fas fa-cloud-sun"></i>
+            <h3>Skyblock One-Block</h3>
+            <p>One block, infinite possibilities. Can you reach the top of the leaderboard?</p>
         </div>
-        <div class="card">
-            <i class="fas fa-trophy"></i>
-            <h3>Seasonal Events</h3>
-            <p>Win real rewards and in-game items in our monthly competitive tournaments.</p>
+        <div class="neon-card">
+            <i class="fas fa-sword"></i>
+            <h3>Crystal PVP</h3>
+            <p>The ultimate combat arena. Show your skills and dominate the pits.</p>
         </div>
     </div>
 </div>
 
-<div class="container" id="rules">
+<div class="section" id="rules">
     <h2 class="section-title">Server Rules</h2>
-    <div class="grid" style="grid-template-columns: 1fr 1fr;">
-        <div class="staff-card">
-            <div class="staff-img">1</div>
-            <div>
-                <h4>No Cheating</h4>
-                <p>Hacking or using unfair mods results in a permanent ban.</p>
-            </div>
+    <div style="max-width: 800px; margin: 0 auto;">
+        <div class="rule-item">
+            <div class="rule-header">1. No Hacking / Cheating <i class="fas fa-plus"></i></div>
         </div>
-        <div class="staff-card" style="border-left-color: var(--neon-blue);">
-            <div class="staff-img">2</div>
-            <div>
-                <h4>Respect Others</h4>
-                <p>Be kind to everyone in the chat. Toxic behavior is not allowed.</p>
-            </div>
+        <div class="rule-item">
+            <div class="rule-header">2. No Toxic Behavior <i class="fas fa-plus"></i></div>
+        </div>
+        <div class="rule-item">
+            <div class="rule-header">3. No Griefing in Main Worlds <i class="fas fa-plus"></i></div>
+        </div>
+        <div class="rule-item">
+            <div class="rule-header">4. Respect Staff Decisions <i class="fas fa-plus"></i></div>
         </div>
     </div>
 </div>
 
-<div class="container" id="staff">
-    <h2 class="section-title">Adven Staff</h2>
+<div class="section" id="faq">
+    <h2 class="section-title">Frequently Asked Questions</h2>
     <div class="grid">
-        <div class="staff-card" style="border-left-color: var(--neon-blue);">
-            <div class="staff-img">O</div>
-            <div>
-                <h4>Server Founders</h4>
-                <p style="color: var(--neon-blue);">Men GamingSL / Demon_SlayerX2</p>
-            </div>
+        <div class="neon-card">
+            <h3>How to join?</h3>
+            <p>Simply copy our IP (play.advennetwork.lk) and add it to your server list in Minecraft Java 1.20+.</p>
         </div>
-        <div class="staff-card">
-            <div class="staff-img">A</div>
-            <div>
-                <h4>Admin Names</h4>
-                <p style="color: var(--neon-green);">Senior Admin</p>
-            </div>
+        <div class="neon-card">
+            <h3>Is it Cracked?</h3>
+            <p>Yes! Both Premium and Cracked players can join Adven Network.</p>
         </div>
     </div>
 </div>
 
-<div id="toast">IP COPIED TO CLIPBOARD!</div>
+<div class="section" id="staff">
+    <h2 class="section-title">Management Team</h2>
+    <div class="grid">
+        <div class="neon-card" style="text-align:center;">
+            <div style="width:80px; height:80px; background:#111; border-radius:50%; margin: 0 auto 20px; border: 2px solid var(--neon-blue);"></div>
+            <h3>ADVEN OWNER</h3>
+            <p style="color:var(--neon-blue)">Lead Developer</p>
+        </div>
+        <div class="neon-card" style="text-align:center;">
+            <div style="width:80px; height:80px; background:#111; border-radius:50%; margin: 0 auto 20px; border: 2px solid var(--neon-green);"></div>
+            <h3>ADMIN NAME</h3>
+            <p style="color:var(--neon-green)">Head Admin</p>
+        </div>
+    </div>
+</div>
 
 <footer>
-    <p style="color: var(--ice-blue);">&copy; 2026 ADVEN NETWORK | Crafted for Gamers</p>
-    <div style="margin-top: 20px; font-size: 1.5rem; gap: 20px; display: flex; justify-content: center;">
-        <i class="fab fa-facebook" style="cursor:pointer;"></i>
-        <i class="fab fa-instagram" style="cursor:pointer;"></i>
-        <i class="fab fa-youtube" style="cursor:pointer;"></i>
+    <div class="grid" style="text-align: left; margin-bottom: 50px;">
+        <div>
+            <h2 class="logo">ADVEN</h2>
+            <p>The #1 Minecraft community in Sri Lanka. Providing top-tier gaming experiences since 2024.</p>
+        </div>
+        <div>
+            <h4 style="color: var(--neon-blue); margin-bottom: 20px;">QUICK LINKS</h4>
+            <p>Vote for us</p>
+            <p>Web Store</p>
+            <p>Ban Appeals</p>
+        </div>
+        <div>
+            <h4 style="color: var(--neon-green); margin-bottom: 20px;">SOCIALS</h4>
+            <div style="font-size: 1.5rem; display: flex; gap: 20px;">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-youtube"></i>
+                <i class="fab fa-tiktok"></i>
+            </div>
+        </div>
     </div>
+    <p style="opacity: 0.5;">&copy; 2026 Adven Network Sri Lanka. Not affiliated with Mojang AB.</p>
 </footer>
 
+<div id="copy-toast">IP COPIED: PLAY.ADVENNETWORK.LK</div>
+
 <script>
-    // Copy IP functionality
     function copyIP() {
-        navigator.clipboard.writeText("Server Maintaning");
-        const toast = document.getElementById('toast');
-        toast.style.display = 'block';
-        setTimeout(() => { toast.style.display = 'none'; }, 2500);
+        navigator.clipboard.writeText("play.advennetwork.lk");
+        const t = document.getElementById('copy-toast');
+        t.style.display = 'block';
+        setTimeout(() => t.style.display = 'none', 3000);
     }
 
-    // Particle background animation
+    // Advanced Particle Background
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
-    let particles = [];
+    let dots = [];
 
     function init() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        particles = [];
-        for (let i = 0; i < 100; i++) {
-            particles.push({
+        dots = [];
+        for(let i=0; i<100; i++) {
+            dots.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                size: Math.random() * 1.5 + 0.5,
-                speedX: Math.random() * 0.5 - 0.25,
-                speedY: Math.random() * 0.5 - 0.25,
-                color: Math.random() > 0.5 ? '#00f2ff' : '#39ff14'
+                vX: (Math.random() - 0.5) * 0.5,
+                vY: (Math.random() - 0.5) * 0.5,
+                size: Math.random() * 2
             });
         }
     }
 
     function animate() {
-        ctx.fillStyle = 'rgba(5, 5, 8, 0.2)';
+        ctx.fillStyle = 'rgba(3, 3, 5, 0.3)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-            p.x += p.speedX;
-            p.y += p.speedY;
-            if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-            if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-            ctx.fillStyle = p.color;
-            ctx.globalAlpha = 0.4;
+        dots.forEach(d => {
+            d.x += d.vX; d.y += d.vY;
+            if(d.x < 0 || d.x > canvas.width) d.vX *= -1;
+            if(d.y < 0 || d.y > canvas.height) d.vY *= -1;
+            ctx.fillStyle = '#00f2ff';
             ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.arc(d.x, d.y, d.size, 0, Math.PI*2);
             ctx.fill();
         });
         requestAnimationFrame(animate);
     }
-
     window.addEventListener('resize', init);
-    init();
-    animate();
+    init(); animate();
 </script>
-
 </body>
 </html>
-
-
-
