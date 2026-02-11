@@ -3,348 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adven Network | Premier Minecraft Server Sri Lanka</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>Adven Network | Official</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables for easy color changes */
-        :root {
-            --primary-color: #4CAF50; /* Minecraft Green */
-            --secondary-color: #FFC107; /* Gold/Yellow for highlights */
-            --bg-dark: #1a1a2e; /* Dark background for overall site */
-            --text-light: #f0f0f0; /* Light text color */
-            --card-bg: rgba(255, 255, 255, 0.08); /* Semi-transparent card background */
-            --border-color: rgba(255, 255, 255, 0.2); /* Subtle border for cards */
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif; /* Modern sans-serif font */
+        * {
             margin: 0;
             padding: 0;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            box-sizing: border-box;
         }
 
-        /* --- Hero Section (Background Image) --- */
+        body, html {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background-color: #000; /* පින්තූරය load වෙනකම් කළු පාටට තියෙයි */
+        }
+
+        /* --- Full Screen Background Fix --- */
         .hero {
-            position: relative;
-            height: 100vh; /* Full viewport height */
+            height: 100vh;
+            width: 100%;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: white;
-            overflow: hidden;
-            
-            /* --- Minecraft Shader Background --- */
-            /* This is a direct link to a beautiful Minecraft shader image */
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                        url('https://wallpaperaccess.com/full/151044.jpg') no-repeat center center / cover;
-            /* The linear-gradient adds a dark overlay for text readability */
-            /* 'background-attachment: fixed;' can be added if you want a parallax scroll effect */
+            /* මෙන්න මේ පේළි ටික තමයි පින්තූරය මුළු screen එකටම ගන්නේ */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://wallpapercave.com/wp/wp8365668.jpg') no-repeat center center fixed;
+            background-size: cover; /* මේකෙන් තමයි මුළු screen එකම cover කරන්නේ */
         }
 
         .hero-content {
-            z-index: 1; /* Make sure content is above the background */
-            padding: 30px 40px;
-            background: rgba(0, 0, 0, 0.6); /* Slightly darker semi-transparent background for text */
-            border-radius: 15px;
-            backdrop-filter: blur(8px); /* Frosted glass effect */
-            border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle border */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Soft shadow */
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid #4CAF50;
+            max-width: 80%;
         }
 
         .hero h1 {
-            font-family: 'Press Start 2P', cursive; /* Retro game font */
-            font-size: 3.5em;
-            margin-bottom: 10px;
-            color: white;
-            text-shadow: 4px 4px var(--primary-color); /* Green shadow */
-            letter-spacing: 2px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 4px 4px #4CAF50;
         }
 
         .hero p {
-            font-size: 1.3em;
-            margin-top: 0;
-            margin-bottom: 25px;
-            text-shadow: 1px 1px rgba(0, 0, 0, 0.7);
+            color: #ddd;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
         }
 
-        /* --- Navigation Bar --- */
-        nav {
-            position: fixed; /* Fixed at the top */
-            top: 0;
-            width: 100%;
-            background: rgba(26, 26, 46, 0.9); /* Slightly more opaque background */
-            padding: 15px 0;
-            z-index: 100;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        nav .logo {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 1.5em;
-            color: var(--secondary-color);
-            text-decoration: none;
-            text-shadow: 2px 2px var(--primary-color);
-            transition: color 0.3s ease;
-        }
-        nav .logo:hover {
-            color: white;
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-left: 30px;
-        }
-
-        nav ul li a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        /* --- Main Content Sections --- */
-        .section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-            background-color: var(--bg-dark); /* Ensure section background is dark */
-        }
-
-        .section h2 {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 2.5em;
-            color: var(--primary-color);
-            margin-bottom: 40px;
-            text-shadow: 2px 2px var(--secondary-color);
-        }
-
-        .section p {
-            font-size: 1.1em;
-            max-width: 800px;
-            margin: 0 auto 30px auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .feature-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
-            padding: 30px;
-            text-align: left;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .feature-card h3 {
-            color: var(--secondary-color);
-            font-size: 1.8em;
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-
-        .feature-card p {
-            font-size: 1em;
-            max-width: none;
-            margin-bottom: 0;
-        }
-
-        /* --- Buttons --- */
         .btn {
-            background: var(--primary-color);
+            background: #4CAF50;
             color: white;
             padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            display: inline-block;
-            margin-top: 20px;
             border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
         }
 
         .btn:hover {
-            background: #3c8f40; /* Slightly darker green */
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transform: scale(1.1);
+            background: #45a049;
         }
 
-        .btn-secondary {
-            background: var(--secondary-color);
+        nav {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.5);
+            z-index: 10;
         }
 
-        .btn-secondary:hover {
-            background: #e6b100; /* Slightly darker yellow */
+        .logo {
+            font-family: 'Press Start 2P', cursive;
+            color: #FFC107;
+            text-decoration: none;
         }
 
-        /* --- Footer --- */
-        footer {
-            background: #111122;
-            padding: 40px 20px;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5em;
-            }
-            .hero p {
-                font-size: 1em;
-            }
-            nav .container {
-                flex-direction: column;
-            }
-            nav ul {
-                margin-top: 15px;
-            }
-            nav ul li {
-                margin: 0 10px;
-            }
-            .section h2 {
-                font-size: 2em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2em;
-            }
-            nav .logo {
-                font-size: 1.2em;
-            }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
+
     <nav>
-        <div class="container">
-            <a href="#" class="logo">Adven Network</a>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+        <a href="#" class="logo">Adven Network</a>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
         </div>
     </nav>
 
-    <section id="home" class="hero">
+    <div class="hero">
         <div class="hero-content">
             <h1>Adven Network</h1>
             <p>Sri Lanka's #1 Minecraft Server! 🚀</p>
-            <p>Diverse Game Modes and a Friendly Gaming Community!</p>
-            <button class="btn" id="copyIpButton" data-ip="play.advennetwork.lk">Copy Server IP</button>
-            <span id="ipCopiedMessage" style="margin-left: 15px; color: var(--secondary-color); display: none;">Copied!</span>
+            <button class="btn" onclick="copyIP()">Copy Server IP</button>
+            <p id="copy-msg" style="display:none; color: #FFC107; margin-top: 10px;">IP Copied!</p>
         </div>
-    </section>
-
-    <section id="about" class="section">
-        <h2>About Us</h2>
-        <p>Adven Network is the premier Minecraft Server created for players in Sri Lanka. Our mission is to provide an unforgettable gaming experience. Join us, make new friends, and enjoy various game modes!</p>
-        <a href="https://discord.gg/yourdiscordlink" target="_blank" class="btn btn-secondary">Join Our Discord</a>
-    </section>
-
-    <section id="features" class="section">
-        <h2>Features</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>Survival</h3>
-                <p>Build your own world, gather resources, and conquer challenges.</p>
-            </div>
-            <div class="feature-card">
-                <h3>SkyBlock</h3>
-                <p>Start from a small island and build your own empire in the sky.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Minigames</h3>
-                <p>Enjoy popular minigames like BedWars, SkyWars, and more!</p>
-            </div>
-            <div class="feature-card">
-                <h3>Friendly Community</h3>
-                <p>Connect with other Sri Lankan players, chat, and play together.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section">
-        <h2>Contact Us</h2>
-        <p>If you have any questions or suggestions, please join our Discord server or send an email to the address below.</p>
-        <p>Email: <a href="mailto:info@advennetwork.lk" style="color: var(--secondary-color); text-decoration: none;">info@advennetwork.lk</a></p>
-        <a href="https://discord.gg/yourdiscordlink" target="_blank" class="btn btn-secondary">Discord</a>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Adven Network. All rights reserved.</p>
-    </footer>
+    </div>
 
     <script>
-        document.getElementById('copyIpButton').addEventListener('click', function() {
-            const ip = this.getAttribute('data-ip');
-            navigator.clipboard.writeText(ip).then(() => {
-                const message = document.getElementById('ipCopiedMessage');
-                message.style.display = 'inline';
-                setTimeout(() => {
-                    message.style.display = 'none';
-                }, 2000); // Hide after 2 seconds
-            }).catch(err => {
-                console.error('Failed to copy IP: ', err);
-                alert('Failed to copy IP. Please copy manually: ' + ip);
-            });
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+        function copyIP() {
+            navigator.clipboard.writeText("play.advennetwork.lk");
+            const msg = document.getElementById('copy-msg');
+            msg.style.display = 'block';
+            setTimeout(() => msg.style.display = 'none', 2000);
+        }
     </script>
+
 </body>
 </html>
-
