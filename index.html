@@ -1,95 +1,87 @@
 <!DOCTYPE html>
-<html lang="si">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adven Network | Minecraft Server Sri Lanka</title>
+    <title>Adven Network | Premier Minecraft Server Sri Lanka</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
+        /* CSS Variables for easy color changes */
         :root {
             --primary-color: #4CAF50; /* Minecraft Green */
-            --secondary-color: #FFC107; /* Gold/Yellow */
-            --bg-dark: #1a1a2e;
-            --text-light: #f0f0f0;
-            --text-dark: #333;
-            --card-bg: rgba(255, 255, 255, 0.08);
-            --border-color: rgba(255, 255, 255, 0.2);
+            --secondary-color: #FFC107; /* Gold/Yellow for highlights */
+            --bg-dark: #1a1a2e; /* Dark background for overall site */
+            --text-light: #f0f0f0; /* Light text color */
+            --card-bg: rgba(255, 255, 255, 0.08); /* Semi-transparent card background */
+            --border-color: rgba(255, 255, 255, 0.2); /* Subtle border for cards */
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Poppins', sans-serif; /* Modern sans-serif font */
             margin: 0;
             padding: 0;
             background-color: var(--bg-dark);
             color: var(--text-light);
             line-height: 1.6;
-            overflow-x: hidden; /* Prevent horizontal scroll from particles */
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
-        /* --- Background with Shaders Vibe (Image) --- */
+        /* --- Hero Section (Background Image) --- */
         .hero {
             position: relative;
-            height: 100vh;
+            height: 100vh; /* Full viewport height */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: white;
-            overflow: hidden; /* Important for background image */
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://postimg.cc/BtYb9sQ8'); /* REPLACE THIS WITH YOUR OWN MINECRAFT SHADER IMAGE URL */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            filter: brightness(0.6) grayscale(0.2); /* Adjust brightness and grayscale for better text readability */
-            z-index: -1;
-            animation: panBackground 20s infinite alternate linear; /* Optional: adds a subtle panning effect */
-        }
-
-        @keyframes panBackground {
-            from { background-position: 0% center; }
-            to { background-position: 100% center; }
+            overflow: hidden;
+            
+            /* --- Minecraft Shader Background --- */
+            /* This is a direct link to a beautiful Minecraft shader image */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://i.imgur.com/uCclpD7.png') no-repeat center center / cover;
+            /* The linear-gradient adds a dark overlay for text readability */
+            /* 'background-attachment: fixed;' can be added if you want a parallax scroll effect */
         }
 
         .hero-content {
-            z-index: 1;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.4); /* Semi-transparent background for text */
-            border-radius: 10px;
-            backdrop-filter: blur(5px); /* Blurry effect */
+            z-index: 1; /* Make sure content is above the background */
+            padding: 30px 40px;
+            background: rgba(0, 0, 0, 0.6); /* Slightly darker semi-transparent background for text */
+            border-radius: 15px;
+            backdrop-filter: blur(8px); /* Frosted glass effect */
+            border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle border */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Soft shadow */
         }
 
         .hero h1 {
             font-family: 'Press Start 2P', cursive; /* Retro game font */
             font-size: 3.5em;
             margin-bottom: 10px;
-            text-shadow: 4px 4px var(--primary-color);
+            color: white;
+            text-shadow: 4px 4px var(--primary-color); /* Green shadow */
+            letter-spacing: 2px;
         }
 
         .hero p {
             font-size: 1.3em;
             margin-top: 0;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px rgba(0, 0, 0, 0.7);
         }
 
         /* --- Navigation Bar --- */
         nav {
-            position: fixed;
+            position: fixed; /* Fixed at the top */
             top: 0;
             width: 100%;
-            background: rgba(26, 26, 46, 0.8); /* Semi-transparent background */
+            background: rgba(26, 26, 46, 0.9); /* Slightly more opaque background */
             padding: 15px 0;
             z-index: 100;
             backdrop-filter: blur(5px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
         }
 
         nav .container {
@@ -107,6 +99,10 @@
             color: var(--secondary-color);
             text-decoration: none;
             text-shadow: 2px 2px var(--primary-color);
+            transition: color 0.3s ease;
+        }
+        nav .logo:hover {
+            color: white;
         }
 
         nav ul {
@@ -138,6 +134,7 @@
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
+            background-color: var(--bg-dark); /* Ensure section background is dark */
         }
 
         .section h2 {
@@ -184,7 +181,7 @@
 
         .feature-card p {
             font-size: 1em;
-            max-width: none; /* Override section p */
+            max-width: none;
             margin-bottom: 0;
         }
 
@@ -197,7 +194,7 @@
             border-radius: 8px;
             font-weight: bold;
             font-size: 1.1em;
-            transition: background 0.3s ease, transform 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             display: inline-block;
             margin-top: 20px;
             border: none;
@@ -276,44 +273,44 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Adven Network</h1>
-            <p>ලංකාවේ අංක 1 Minecraft Server එක! 🚀</p>
-            <p>විවිධ Game Modes සහ සුහද Gaming Community එකක්!</p>
-            <button class="btn" id="copyIpButton" data-ip="play.advennetwork.lk">Server IP Copy කරන්න</button>
+            <p>Sri Lanka's #1 Minecraft Server! 🚀</p>
+            <p>Diverse Game Modes and a Friendly Gaming Community!</p>
+            <button class="btn" id="copyIpButton" data-ip="play.advennetwork.lk">Copy Server IP</button>
             <span id="ipCopiedMessage" style="margin-left: 15px; color: var(--secondary-color); display: none;">Copied!</span>
         </div>
     </section>
 
     <section id="about" class="section">
-        <h2>අපි ගැන</h2>
-        <p>Adven Network යනු ශ්‍රී ලංකාවේ සිටින Minecraft ක්‍රීඩකයින් සඳහා නිර්මාණය කරන ලද විශිෂ්ටතම Gaming Server එකකි. අපගේ ඉලක්කය වන්නේ ඔබට අමතක නොවන gaming අත්දැකීමක් ලබා දීමයි. අප සමඟ එක්වී අලුත් මිතුරන් ඇති කරගෙන විවිධ Game Modes තුළින් විනෝද වන්න.</p>
-        <a href="https://discord.gg/yourdiscordlink" target="_blank" class="btn btn-secondary">අපේ Discord එකට එන්න</a>
+        <h2>About Us</h2>
+        <p>Adven Network is the premier Minecraft Server created for players in Sri Lanka. Our mission is to provide an unforgettable gaming experience. Join us, make new friends, and enjoy various game modes!</p>
+        <a href="https://discord.gg/yourdiscordlink" target="_blank" class="btn btn-secondary">Join Our Discord</a>
     </section>
 
     <section id="features" class="section">
-        <h2>විශේෂාංග</h2>
+        <h2>Features</h2>
         <div class="features-grid">
             <div class="feature-card">
                 <h3>Survival</h3>
-                <p>ඔබේම ලෝකයක් ගොඩනගන්න, සම්පත් එකතු කරන්න, සහ අභියෝග ජයගන්න.</p>
+                <p>Build your own world, gather resources, and conquer challenges.</p>
             </div>
             <div class="feature-card">
                 <h3>SkyBlock</h3>
-                <p>පොඩි දූපතකින් පටන් අරන් ඔබේම අධිරාජ්‍යයක් නිර්මාණය කරන්න.</p>
+                <p>Start from a small island and build your own empire in the sky.</p>
             </div>
             <div class="feature-card">
                 <h3>Minigames</h3>
-                <p>BedWars, SkyWars වැනි ජනප්‍රිය Minigames වලින් විනෝද වන්න.</p>
+                <p>Enjoy popular minigames like BedWars, SkyWars, and more!</p>
             </div>
             <div class="feature-card">
                 <h3>Friendly Community</h3>
-                <p>ලංකාවේ අනිත් players ලා එක්ක සම්බන්ධ වෙන්න, කතා කරන්න, සෙල්ලම් කරන්න.</p>
+                <p>Connect with other Sri Lankan players, chat, and play together.</p>
             </div>
         </div>
     </section>
 
     <section id="contact" class="section">
-        <h2>අප අමතන්න</h2>
-        <p>ඔබට කිසියම් ප්‍රශ්නයක් හෝ යෝජනාවක් තිබේ නම්, අපගේ Discord server එකට සම්බන්ධ වන්න, නැතහොත් පහත email ලිපිනයට පණිවිඩයක් එවන්න.</p>
+        <h2>Contact Us</h2>
+        <p>If you have any questions or suggestions, please join our Discord server or send an email to the address below.</p>
         <p>Email: <a href="mailto:info@advennetwork.lk" style="color: var(--secondary-color); text-decoration: none;">info@advennetwork.lk</a></p>
         <a href="https://discord.gg/yourdiscordlink" target="_blank" class="btn btn-secondary">Discord</a>
     </section>
@@ -333,7 +330,7 @@
                 }, 2000); // Hide after 2 seconds
             }).catch(err => {
                 console.error('Failed to copy IP: ', err);
-                alert('IP එක copy කිරීමට අපහසු විය. කරුණාකර අතින් copy කරන්න: ' + ip);
+                alert('Failed to copy IP. Please copy manually: ' + ip);
             });
         });
 
@@ -349,6 +346,4 @@
         });
     </script>
 </body>
-
 </html>
-
