@@ -30,7 +30,7 @@
             overflow-x: hidden;
         }
 
-        /* --- Hero Section with Your Image --- */
+        /* --- Full Page Background Image --- */
         .hero {
             height: 100vh;
             width: 100%;
@@ -39,10 +39,9 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            /* Using the link you provided */
             background: linear-gradient(var(--dark-overlay), var(--dark-overlay)), 
-                        url('https://i.postimg.cc/pVGdjBzh/download.jpg') no-repeat center center fixed;
-            background-size: cover;
+                        url('https://i.postimg.cc/FRrynxTg/mc.jpg') no-repeat center center fixed;
+            background-size: cover; /* මේකෙන් තමයි මුළු පේජ් එකටම ගන්නේ */
             position: relative;
         }
 
@@ -55,28 +54,19 @@
             letter-spacing: 5px;
         }
 
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            color: var(--ice-blue);
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-        }
-
         /* --- Navigation --- */
         nav {
             padding: 20px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(15px);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
             border-bottom: 1px solid var(--neon-blue);
-            box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
         }
 
         .logo {
@@ -88,328 +78,191 @@
             text-shadow: 0 0 10px var(--neon-blue);
         }
 
-        .nav-links a {
+        .nav-links a, .login-trigger {
             color: white;
             text-decoration: none;
-            margin-left: 25px;
+            margin-left: 20px;
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .login-trigger {
+            border: 1px solid var(--neon-blue);
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .login-trigger:hover {
+            background: var(--neon-blue);
+            color: black;
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        /* --- LOGIN POPUP (MODAL) --- */
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+        }
+
+        .login-box {
+            background: #0a0a0f;
+            padding: 40px;
+            border-radius: 15px;
+            border: 2px solid var(--neon-blue);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+            animation: slideDown 0.4s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .login-box h2 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 25px;
+            color: var(--neon-blue);
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .login-box input:focus {
+            border-color: var(--neon-blue);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--neon-blue);
+            border: none;
+            color: black;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            cursor: pointer;
+            border-radius: 5px;
             transition: 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--neon-blue);
-            text-shadow: 0 0 10px var(--neon-blue);
+        .login-btn:hover {
+            box-shadow: 0 0 20px var(--neon-blue);
+            transform: scale(1.02);
         }
 
-        /* --- Advanced Neon Buttons --- */
+        /* --- Buttons --- */
         .btn-neon {
-            padding: 18px 50px;
-            background: transparent;
-            color: var(--neon-blue);
+            padding: 15px 40px;
             border: 2px solid var(--neon-blue);
+            color: var(--neon-blue);
+            text-decoration: none;
             font-family: 'Orbitron', sans-serif;
             font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
             border-radius: 5px;
             transition: 0.4s;
-            text-decoration: none;
-            display: inline-block;
-            letter-spacing: 2px;
         }
 
         .btn-neon:hover {
             background: var(--neon-blue);
-            color: #000;
-            box-shadow: 0 0 20px var(--neon-blue), 0 0 60px var(--neon-blue), 0 0 100px var(--neon-blue);
-            transform: translateY(-5px);
-        }
-
-        /* --- Status Bar --- */
-        .status-bar {
-            background: rgba(0, 242, 255, 0.1);
-            padding: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            border-bottom: 1px solid var(--neon-blue);
-            backdrop-filter: blur(5px);
-        }
-
-        .status-item { text-align: center; }
-        .status-item h3 { font-family: 'Orbitron'; color: var(--neon-green); font-size: 1.8rem; }
-
-        /* --- Sections Layout --- */
-        .section { padding: 100px 10%; background: #050508; }
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 70px;
-            text-transform: uppercase;
-            color: white;
-            text-shadow: 0 0 15px rgba(255,255,255,0.2);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-        }
-
-        /* --- Neon Glow Cards --- */
-        .card {
-            background: var(--glass);
-            padding: 50px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: 0.5s;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-15px);
-            border-color: var(--neon-blue);
-            box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
-            background: rgba(0, 242, 255, 0.05);
-        }
-
-        .card i {
-            font-size: 4rem;
-            color: var(--neon-blue);
-            margin-bottom: 25px;
-            filter: drop-shadow(0 0 10px var(--neon-blue));
-        }
-
-        .card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            color: var(--ice-blue);
-            margin-bottom: 20px;
-        }
-
-        /* --- Server IP Box --- */
-        .ip-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 2px dashed var(--neon-green);
-            padding: 20px 40px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            cursor: pointer;
-            transition: 0.3s;
-            margin: 40px 0;
-        }
-
-        .ip-box:hover {
-            background: rgba(57, 255, 20, 0.1);
-            box-shadow: 0 0 20px var(--neon-green);
-        }
-
-        /* --- Rules Section --- */
-        .rules-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .rule-card {
-            background: var(--glass);
-            margin-bottom: 15px;
-            padding: 25px;
-            border-radius: 10px;
-            border-left: 5px solid var(--neon-blue);
-            transition: 0.3s;
-        }
-
-        .rule-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateX(10px);
-        }
-
-        /* --- Footer --- */
-        footer {
-            padding: 80px 10% 40px;
-            background: #000;
-            border-top: 1px solid var(--neon-blue);
-            text-align: center;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 50px;
-            text-align: left;
-            margin-bottom: 50px;
-        }
-
-        .footer-logo {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--neon-blue);
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        #toast {
-            position: fixed;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--neon-green);
             color: black;
-            padding: 15px 40px;
-            border-radius: 10px;
-            font-weight: 900;
-            display: none;
-            z-index: 10000;
-            box-shadow: 0 0 20px var(--neon-green);
+            box-shadow: 0 0 20px var(--neon-blue);
         }
 
+        /* --- Content Sections --- */
+        .section { padding: 100px 10%; background: #050508; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: var(--glass); padding: 40px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1); text-align: center; transition: 0.3s; }
+        .card:hover { border-color: var(--neon-blue); transform: translateY(-10px); }
+
+        footer { padding: 50px; text-align: center; border-top: 1px solid var(--neon-blue); }
     </style>
 </head>
 <body>
 
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-box">
+            <h2>STAFF LOGIN</h2>
+            <input type="text" placeholder="Username">
+            <input type="password" placeholder="Password">
+            <button class="login-btn" onclick="alert('System Under Maintenance!')">LOGIN</button>
+            <p style="margin-top: 20px; font-size: 0.8rem; color: gray; cursor: pointer;" onclick="closeLogin()">Close</p>
+        </div>
+    </div>
+
     <nav>
-        <a href="#" class="logo">ADVEN NETWORK</a>
+        <a href="#" class="logo">ADVEN</a>
         <div class="nav-links">
             <a href="#home">Home</a>
-            <a href="#about">About</a>
             <a href="#features">Features</a>
-            <a href="#rules">Rules</a>
-            <a href="https://discord.gg/yourlink">Discord</a>
+            <a class="login-trigger" onclick="openLogin()">Staff Login</a>
         </div>
     </nav>
 
     <div class="hero" id="home">
         <h1>ADVEN NETWORK</h1>
-        <p>The Most Advanced Minecraft Gaming Network in Sri Lanka. Experience lag-free gameplay with a dedicated community.</p>
-        
-        <div class="ip-box" onclick="copyIP()">
-            <span style="font-family: 'Orbitron'; font-size: 1.2rem; color: var(--neon-green); letter-spacing: 2px;">PLAY.ADVENNETWORK.LK</span>
-            <span style="background: var(--neon-green); color: black; padding: 5px 15px; border-radius: 20px; font-weight: bold;">COPY IP</span>
-        </div>
-
-        <div style="margin-top: 30px; gap: 20px; display: flex;">
-            <a href="#about" class="btn-neon">Explore More</a>
-            <a href="https://discord.gg/yourlink" class="btn-neon" style="border-color: var(--neon-green); color: var(--neon-green);">Join Discord</a>
+        <p>Explore the ultimate Minecraft server from Sri Lanka.</p>
+        <div style="display: flex; gap: 20px;">
+            <a href="#features" class="btn-neon">Explore</a>
+            <a href="#" class="btn-neon" style="border-color: var(--neon-green); color: var(--neon-green);">Discord</a>
         </div>
     </div>
 
-    <div class="status-bar">
-        <div class="status-item"><h3>24/7</h3><p>UPTIME</p></div>
-        <div class="status-item"><h3>1.20.x</h3><p>VERSION</p></div>
-        <div class="status-item"><h3>CRACKED</h3><p>SUPPORTED</p></div>
-    </div>
-
-    <section class="section" id="about">
-        <h2 class="section-title">Why Adven?</h2>
+    <section class="section" id="features">
+        <h2 style="text-align: center; margin-bottom: 50px; font-family: 'Orbitron';">SERVER MODES</h2>
         <div class="grid">
             <div class="card">
-                <i class="fas fa-server"></i>
-                <h3>High Performance</h3>
-                <p>We use high-end dedicated hardware to ensure 20 TPS even with 100+ players online.</p>
+                <i class="fas fa-tree" style="font-size: 3rem; color: var(--neon-blue); margin-bottom: 20px;"></i>
+                <h3>Survival</h3>
+                <p>Custom survival with jobs and claims.</p>
             </div>
             <div class="card">
-                <i class="fas fa-user-shield"></i>
-                <h3>Anti-Grief</h3>
-                <p>Your builds are safe with us. Our advanced protection systems keep your progress secure.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-coins"></i>
-                <h3>Custom Economy</h3>
-                <p>A balanced player-driven economy with shops, auctions, and trade systems.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="features" style="background: #080810;">
-        <h2 class="section-title">Game Modes</h2>
-        <div class="grid">
-            <div class="card">
-                <i class="fas fa-mountain"></i>
-                <h3>Enhanced Survival</h3>
-                <p>Survival with a twist! Custom enchants, quests, and special abilities for players.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-cloud"></i>
+                <i class="fas fa-cloud" style="font-size: 3rem; color: var(--neon-blue); margin-bottom: 20px;"></i>
                 <h3>Skyblock</h3>
-                <p>Start on a void island and expand your empire. Compete for the top island rank!</p>
+                <p>Build your empire on a floating island.</p>
             </div>
-            <div class="card">
-                <i class="fas fa-swords"></i>
-                <h3>Lifesteal</h3>
-                <p>The ultimate survival challenge. Kill players to gain hearts, but don't lose them all!</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="rules">
-        <h2 class="section-title">Server Rules</h2>
-        <div class="rules-container">
-            <div class="rule-card"><h4>01. NO HACKING</h4><p>Any form of cheating or advantage-modifications will result in a permanent ban.</p></div>
-            <div class="rule-card"><h4>02. BE RESPECTFUL</h4><p>Toxic behavior, racism, or harassment is strictly prohibited in our community.</p></div>
-            <div class="rule-card"><h4>03. NO ADVERTISING</h4><p>Do not promote other servers or websites in the game or Discord.</p></div>
-            <div class="rule-card"><h4>04. NO GRIEFING</h4><p>Respect other players' builds and property in non-pvp zones.</p></div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-grid">
-            <div>
-                <div class="footer-logo">ADVEN</div>
-                <p>Providing the best Minecraft experience in Sri Lanka since 2024. Join us today and be part of the legend.</p>
-            </div>
-            <div>
-                <h4 style="color: var(--neon-blue); margin-bottom: 20px;">QUICK LINKS</h4>
-                <p><a href="#home" style="color: gray; text-decoration: none;">Home</a></p>
-                <p><a href="#rules" style="color: gray; text-decoration: none;">Rules</a></p>
-                <p><a href="#" style="color: gray; text-decoration: none;">Store</a></p>
-            </div>
-            <div>
-                <h4 style="color: var(--neon-green); margin-bottom: 20px;">FOLLOW US</h4>
-                <div style="font-size: 1.5rem; display: flex; gap: 20px;">
-                    <i class="fab fa-facebook"></i>
-                    <i class="fab fa-youtube"></i>
-                    <i class="fab fa-tiktok"></i>
-                </div>
-            </div>
-        </div>
-        <p style="opacity: 0.3; margin-top: 50px;">&copy; 2026 Adven Network. Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</p>
+        <p>&copy; 2026 Adven Network. All rights reserved.</p>
     </footer>
 
-    <div id="toast">IP COPIED TO CLIPBOARD!</div>
-
     <script>
-        function copyIP() {
-            navigator.clipboard.writeText("play.advennetwork.lk");
-            const toast = document.getElementById('toast');
-            toast.style.display = 'block';
-            setTimeout(() => { toast.style.display = 'none'; }, 3000);
+        function openLogin() {
+            document.getElementById('loginOverlay').style.display = 'flex';
         }
-
-        // Smooth Appearance on Scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = "translateY(0)";
-                }
-            });
-        });
-
-        document.querySelectorAll('.card').forEach((el) => {
-            el.style.opacity = 0;
-            el.style.transform = "translateY(50px)";
-            el.style.transition = "1s ease-out";
-            observer.observe(el);
-        });
+        function closeLogin() {
+            document.getElementById('loginOverlay').style.display = 'none';
+        }
+        // Close if clicked outside the box
+        window.onclick = function(event) {
+            let overlay = document.getElementById('loginOverlay');
+            if (event.target == overlay) {
+                closeLogin();
+            }
+        }
     </script>
 </body>
 </html>
-
-
-
